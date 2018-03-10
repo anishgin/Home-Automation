@@ -1,1 +1,133 @@
-<html><title>Anish G</title><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><link rel="shortcut icon" type="image/png" href="images/favicon.png"/><link rel="icon" type="image/png" href="images/favicon.ico"/><link rel="stylesheet" href="css/styles.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta+Malar:300"/><style>h1 {	font-family: 'Mukta Malar', sans-serif;	font-size: 110px;	font-style: normal;	font-variant: normal;	font-weight: 100;	line-height: 12.1px;}</style></head><body bgcolor="#3399ff"><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><div class="whole">	<div class="thediv" style="text-align: center";>		<h1 style="color:white;display: inline-block">நிலமை</h1>		<div class="onoffswitch" style="display: inline-block; margin-top: 66px">			<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" disabled>			<label class="onoffswitch-label" for="myonoffswitch"></label>		</div>	</div>	</div><div id="container"></div><!--https://codepen.io/Catagen/pen/PqYdXRhttps://ianlunn.github.io/Hover/https://daneden.github.io/animate.css/https://tympanus.net/Tutorials/SmoothTransitionsResponsiveLayout/https://www.zachstronaut.com/lab/text-shadow-box/text-shadow-box.htmlhttps://demo.tutorialzine.com/2011/07/about-page-vcard-php-css/--><script>    $('.onoffswitch-checkbox').click(function() {              if(this.checked){            $.ajax({                type: "GET",                url: '/Bulb/on',                success: function(res) {		if (res == "TRUE"){$('#container').html(res);$('.onoffswitch-checkbox').prop('checked', true);}			else {$('#container').html("<--->");$('.onoffswitch-checkbox').prop('checked', false);}		                     },                error: function(res) {$('#myonoffswitch').attr("disabled",true);},                complete: function(res) {}            });	}	else{		$.ajax({                type: "GET",                url: '/Bulb/off',                success: function(res) {			if (res == "TRUE"){$('#container').html(res);$('.onoffswitch-checkbox').prop('checked', true);}			else {$('#container').html("False");$('.onoffswitch-checkbox').prop('checked', false);}                                    },                 error: function(res) {$('#myonoffswitch').attr("disabled",true);},                complete: function(res) {}            	});            }      });$(document).ready(function() {      	$.ajax({                type: "GET",                url: '/BulbStatus',                success: function(res) {		if (res == "TRUE"){$('#myonoffswitch').attr("disabled",false);$('#container').html(res);$('.onoffswitch-checkbox').prop('checked', true);}			else {$('#myonoffswitch').attr("disabled",false);$('#container').html("<><>");$('.onoffswitch-checkbox').prop('checked', false);}		                     },                error: function(res) {$('#myonoffswitch').attr("disabled",true);},                complete: function(res) {}            });});</script></body></html>
+<html>
+<title>Anish G</title>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="shortcut icon" type="image/png" href="images/favicon.png" />
+<link rel="icon" type="image/png" href="images/favicon.ico" />
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Mukta+Malar:300" />
+<style>
+h1 {
+	font-family: 'Mukta Malar', sans-serif;
+	font-size: 110px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 100;
+	line-height: 12.1px;
+}
+</style>
+
+</head>
+
+<body bgcolor="#3399ff">
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+	<div class="whole">
+
+		<div class="thediv" style="text-align: center";>
+
+			<h1 style="color: white; display: inline-block">நிலமை</h1>
+
+			<div class="onoffswitch"
+				style="display: inline-block; margin-top: 66px">
+
+				<input type="checkbox" name="onoffswitch"
+					class="onoffswitch-checkbox" id="myonoffswitch" disabled> <label
+					class="onoffswitch-label" for="myonoffswitch"></label>
+
+			</div>
+
+		</div>
+
+
+
+	</div>
+
+	<div id="container"></div>
+	<!--
+https://codepen.io/Catagen/pen/PqYdXR
+https://ianlunn.github.io/Hover/
+https://daneden.github.io/animate.css/
+https://tympanus.net/Tutorials/SmoothTransitionsResponsiveLayout/
+https://www.zachstronaut.com/lab/text-shadow-box/text-shadow-box.html
+https://demo.tutorialzine.com/2011/07/about-page-vcard-php-css/
+-->
+	<script>
+		$('.onoffswitch-checkbox').click(function() {
+
+			if (this.checked) {
+				$.ajax({
+					type : "GET",
+					url : '/Bulb/on',
+					success : function(res) {
+						if (res == "TRUE") {
+							$('#container').html(res);
+							$('.onoffswitch-checkbox').prop('checked', true);
+						} else {
+							$('#container').html("<--->");
+							$('.onoffswitch-checkbox').prop('checked', false);
+						}
+					},
+					error : function(res) {
+						$('#myonoffswitch').attr("disabled", true);
+					},
+					complete : function(res) {
+					}
+				});
+			}
+
+			else {
+				$.ajax({
+					type : "GET",
+					url : '/Bulb/off',
+					success : function(res) {
+						if (res == "TRUE") {
+							$('#container').html(res);
+							$('.onoffswitch-checkbox').prop('checked', true);
+						} else {
+							$('#container').html("False");
+							$('.onoffswitch-checkbox').prop('checked', false);
+						}
+
+					},
+					error : function(res) {
+						$('#myonoffswitch').attr("disabled", true);
+					},
+					complete : function(res) {
+					}
+				});
+			}
+		});
+
+		$(document).ready(function() {
+
+			$.ajax({
+				type : "GET",
+				url : '/BulbStatus',
+				success : function(res) {
+					if (res == "TRUE") {
+						$('#myonoffswitch').attr("disabled", false);
+						$('#container').html(res);
+						$('.onoffswitch-checkbox').prop('checked', true);
+					} else {
+						$('#myonoffswitch').attr("disabled", false);
+						$('#container').html("<><>");
+						$('.onoffswitch-checkbox').prop('checked', false);
+					}
+				},
+				error : function(res) {
+					$('#myonoffswitch').attr("disabled", true);
+				},
+				complete : function(res) {
+				}
+			});
+
+		});
+	</script>
+
+</body>
+
+</html>
